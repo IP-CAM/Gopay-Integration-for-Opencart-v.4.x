@@ -18,3 +18,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: opencart_gopay.ocmod.zip
+          prerelease: true
