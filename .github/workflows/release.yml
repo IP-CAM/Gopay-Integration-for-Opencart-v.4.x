@@ -11,9 +11,19 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+
       - name: Package plugin
         run: |
-          zip -r opencart_gopay.ocmod.zip *
+          zip -r opencart_gopay.ocmod.zip . -x "*.git*" -x "*.github*" -x "composer.json" -x "composer.lock" -x "readme.md"
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
