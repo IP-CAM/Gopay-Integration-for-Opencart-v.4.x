@@ -28,7 +28,7 @@ jobs:
                     --exclude='.github' \
                     --exclude='composer.json' \
                     --exclude='composer.lock' \
-                    --exclued='readme.md' \
+                    --exclude='readme.md' \
                     . gopay-gateway/
           zip -r gopay-gateway-${{ github.ref_name }}.zip gopay-gateway
 
