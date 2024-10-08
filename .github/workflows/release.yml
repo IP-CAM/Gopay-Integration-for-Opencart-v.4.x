@@ -22,18 +22,10 @@ jobs:
 
       - name: Package plugin
         run: |
-          mkdir -p gopay-gateway
-          rsync -av --exclude='gopay-gateway' \
-                    --exclude='.git*' \
-                    --exclude='.github' \
-                    --exclude='composer.json' \
-                    --exclude='composer.lock' \
-                    --exclude='readme.md' \
-                    . gopay-gateway/
-          zip -r gopay-gateway-${{ github.ref_name }}.zip gopay-gateway
+          zip -r opencart_gopay.ocmod.zip . -x "*.git*" -x "*.github*" -x "composer.json" -x "composer.lock" -x "readme.md"
 
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: gopay-gateway-${{ github.ref_name }}.zip
+          files: opencart_gopay.ocmod.zip
           prerelease: true
